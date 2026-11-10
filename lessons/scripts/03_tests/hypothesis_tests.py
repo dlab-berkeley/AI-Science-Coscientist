@@ -7,7 +7,7 @@ No LLM and no key. Everything is ordinary least squares on log10 values.
   3. Significance: does x2 matter at all?
   4. Reveal: undo the disguise and estimate the gravitational constant G
 
-Run:  python scripts/03_tests/hypothesis_tests.py [--data data/observations.csv] [--out results]
+Run:  python lessons/scripts/03_tests/hypothesis_tests.py [--data data/observations.csv] [--out lessons/results]
 """
 import argparse
 import json
@@ -20,15 +20,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 from scipy import stats
 
-ROOT = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(ROOT / "scripts" / "02_openevolve"))
+ROOT = Path(__file__).resolve().parents[3]
+sys.path.insert(0, str(ROOT / "lessons" / "scripts" / "02_openevolve"))
 sys.path.insert(0, str(ROOT / "data"))
 from evaluator import evaluate, load_rows  # noqa: E402
 from reveal import G_ACCEPTED, implied_g, load_key  # noqa: E402
 
 N_BOOT = 5000
 SEED = 1687  # the year of Newton's Principia
-EVOLVED = ROOT / "scripts" / "02_openevolve" / "openevolve_output" / "best" / "best_program.py"
+EVOLVED = ROOT / "lessons" / "scripts" / "02_openevolve" / "openevolve_output" / "best" / "best_program.py"
 
 # name, description, design-matrix columns (free exponents), fixed exponents (p, q)
 HYPOTHESES = [
@@ -195,7 +195,7 @@ def figure(rows, table, path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--data", type=Path, default=ROOT / "data" / "observations.csv")
-    parser.add_argument("--out", type=Path, default=ROOT / "results")
+    parser.add_argument("--out", type=Path, default=ROOT / "lessons" / "results")
     args = parser.parse_args()
     args.out.mkdir(parents=True, exist_ok=True)
 

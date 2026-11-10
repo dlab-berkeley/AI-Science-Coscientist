@@ -5,7 +5,7 @@
   - measurement noise is added, so the law has to be fitted, not read off
 
 Writes observations.csv (what the tools see) and key.json (how to undo the
-disguise, used only at the reveal in scripts/03_tests/hypothesis_tests.py).
+disguise, used only at the reveal in lessons/scripts/03_tests/hypothesis_tests.py).
 
 Run:  python data/make_dataset.py [--noise 0.03] [--mass-noise 0.10] [--out-dir data]
 """

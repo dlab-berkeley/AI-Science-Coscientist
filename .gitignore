@@ -494,7 +494,7 @@ __pycache__/
 .openscience/
 .venv/
 results/
-paper/report.md
+lessons/paper/report.md
 .coscientist_cache/
 .coscientist_prompts/
 

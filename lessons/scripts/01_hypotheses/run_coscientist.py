@@ -7,9 +7,9 @@ x1, x2 and y from the training groups.
 
 Needs one key in the environment: OPENAI_API_KEY, ANTHROPIC_API_KEY or GEMINI_API_KEY.
 
-Run:  python scripts/01_hypotheses/run_coscientist.py --model gpt-4.1-mini
-      python scripts/01_hypotheses/run_coscientist.py --model gemini/gemini-2.5-flash
-      python scripts/01_hypotheses/run_coscientist.py --model anthropic/claude-haiku-4-5-20251001
+Run:  python lessons/scripts/01_hypotheses/run_coscientist.py --model gpt-4.1-mini
+      python lessons/scripts/01_hypotheses/run_coscientist.py --model gemini/gemini-2.5-flash
+      python lessons/scripts/01_hypotheses/run_coscientist.py --model anthropic/claude-haiku-4-5-20251001
 """
 import argparse
 import asyncio
@@ -19,7 +19,7 @@ from pathlib import Path
 
 from open_coscientist import HypothesisGenerator
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 DATA = ROOT / "data" / "observations.csv"
 
 GOAL = """Find a single formula y = f(x1, x2) that predicts y in the measurements below.
@@ -47,7 +47,7 @@ async def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--model", default="gemini/gemini-2.5-flash", help="any LiteLLM model name")
     parser.add_argument("--hypotheses", type=int, default=4, help="initial hypotheses (more = more API calls)")
-    parser.add_argument("--out", type=Path, default=ROOT / "results" / "hypotheses.json")
+    parser.add_argument("--out", type=Path, default=ROOT / "lessons" / "results" / "hypotheses.json")
     args = parser.parse_args()
 
     generator = HypothesisGenerator(
