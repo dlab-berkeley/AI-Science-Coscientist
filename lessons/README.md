@@ -17,6 +17,19 @@ be fitted, not recited from memory. Part 3 opens the key: the data are real
 orbits, and the law is Kepler's third law with Newton's mass term,
 `T = 2π √(a³ / GM)`.
 
+## 1-Hour Workshop Schedule
+
+The live session does one challenge per notebook. The others are marked
+⏱️ **Take-home** in the notebooks.
+
+| Time | Notebook | Live challenge |
+| --- | --- | --- |
+| 15 min | 1. Blind Data and Hypotheses | Challenge 2: Score a Hypothesis |
+| 15 min | 2. Evolving a Formula | Challenge 1: A Leaky Evaluator |
+| 10 min | 3. Testing Hypotheses | None: run the cells and show the reveal |
+| 15 min | 4. Writing and Auditing the Paper | Challenge 1: Check the Interval Claim |
+| 5 min | Wrap-up | Rules for using AI in research, and questions |
+
 ## Folder Layout
 
 ```
