@@ -1,11 +1,11 @@
-# Stage 4: from results to a pseudo-paper with OpenScience
+# Part 4: from results to a pseudo-paper with OpenScience
 
 [OpenScience](https://github.com/synthetic-sciences/openscience) is an
 open-source research agent: it reads the project folder, runs code, and writes
-up what it finds. Here it gets the Stage 3 results and the 17th-century
+up what it finds. Here it gets the Part 3 results and the 17th-century
 sources, and must produce a short paper.
 
-This is the first stage that is **not blind**. The agent is told what the
+This is the first part that is **not blind**. The agent is told what the
 variables are, and is asked to compare the blind result with the literature.
 
 No key, or no Node.js? Use the offline fallback, which fills the same paper
@@ -26,7 +26,7 @@ export OPENAI_API_KEY=your-key     # read from the environment; or run `openscie
 openscience models openai          # lists the models your key can use
 ```
 
-Run Stage 3 first so `lessons/results/` exists:
+Run Part 3 first so `lessons/results/` exists:
 
 ```bash
 uv run python lessons/scripts/03_tests/hypothesis_tests.py
@@ -66,7 +66,7 @@ Write lessons/paper/report.md with these sections:
 2. Introduction: what Galileo (1610), Kepler (1619) and Newton (1687) each
    claimed. Quote only passages that appear in data/literature/README.md and cite
    them by their keys [G1610], [K1619], [N1687].
-3. Hypotheses: H1 to H4 as formulas, and which historical claim each one is.
+3. Hypotheses: H1 to H4 as formulas, and which historical claim, if any, each one corresponds to.
 4. Methods: blind protocol (disguised names and units, added noise),
    train and held-out groups, least squares in log space, bootstrap, F-test.
 5. Results: the model comparison table, the figure, the exponent intervals,
@@ -83,7 +83,7 @@ Rules:
 - If a result disagrees with a historical claim, say so plainly.
 ```
 
-## What to point out while replaying the recording
+## What to point out while reading the saved report
 
 - Which files it opened, and whether it ran any code of its own.
 - Whether each quotation matches `data/literature/README.md` word for word.

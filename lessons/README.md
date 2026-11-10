@@ -57,10 +57,9 @@ AI-Science-Coscientist/
   solutions/               the challenge solutions, one notebook per part
   data/
     observations.csv       the disguised data: the only data file the AI sees in Parts 1–2
-    orbits.csv             the undisguised source data, opened at the reveal
-    make_dataset.py        builds observations.csv from orbits.csv
+    make_dataset.py        builds observations.csv from the undisguised source data (opened at the reveal)
     key.json, reveal.py    how to undo the disguise, used only at the reveal
-    literature/            Galileo 1610, Kepler 1619, Newton 1687: citations and quotations
+    literature/            historical sources, used in Part 4
   images/                  figures for the READMEs
 ```
 
@@ -80,6 +79,9 @@ Never commit a key. Export it before you start Jupyter:
 | OpenAI (paid) | `OPENAI_API_KEY` | Yes | `gpt-4.1-mini` | `config.openai.yaml` (gpt-4o-mini) |
 | Gemini (free tier) | `GEMINI_API_KEY` | No | `gemini/gemini-2.5-flash` | `config.yaml` (gemini-2.5-flash-lite) |
 | Anthropic (paid), `run_all.sh` only | `ANTHROPIC_API_KEY` | No | `anthropic/claude-haiku-4-5-20251001` | `config.anthropic.yaml` (claude-haiku-4-5) |
+
+Free tiers and new accounts are rate-limited: a 30-round OpenEvolve run can
+stop early (ours stopped after 10). Run the demos once before the session.
 
 The config files are in `scripts/02_openevolve/`. In the live session, the
 instructor runs the demos with one key; students use the no-key path.
@@ -114,8 +116,6 @@ then Anthropic, then Gemini.
 
 ## Sources and Licences
 
-- `data/orbits.csv`: NASA planetary and satellite fact sheets. Every row
-  agrees with the law the workshop recovers to within 1%.
 - `data/literature/`: public-domain editions, linked there.
 - Open Coscientist: MIT with Commons Clause. OpenEvolve and OpenScience:
   Apache 2.0.
@@ -140,6 +140,9 @@ From Part 3, on the committed data:
 | H2 | `y = c * x1^p` (no x2) | 0.293 |
 | H3 | `y = c * x1^p * x2^q` | 0.037 |
 | H4 | `y = c * x1^(3/2) * x2^(-1/2)` (Newton's form) | 0.036 |
+
+Source: `data/orbits.csv`, from NASA planetary and satellite fact sheets.
+Every row agrees with the law to within 1%.
 
 Error is in dex: the mean absolute error of log10(y) on the held-out groups
 C, D and G, which the least-squares fits in Part 3 never see. 0.036 dex is about 9%; 0.29 dex is about
@@ -170,7 +173,7 @@ One run each, with an OpenAI key.
 | --- | --- | --- |
 | 1. Open Coscientist | `gpt-4.1-mini` | Completed in 96 s. Its top-ranked hypotheses were power laws with the wrong sign on the `x2` exponent (+0.5; the data say −0.5). |
 | 2. OpenEvolve | `gpt-4o-mini` | Score (higher is better; 1 / (1 + held-out error)) rose from 0.803 to 0.964, a held-out error of 0.037 dex, the same as H3: a least-squares power law fitted from the data. Only 10 of 30 iterations ran because of a rate limit. OpenEvolve's score used these same groups, so its 0.037 dex is not an independent test. |
-| 4. OpenScience | `gpt-4.1-mini` | Wrote a paper in 40 s. Its tables were correct, but the text had six errors, including the main one: it said the row-resampling interval for G contains the accepted value. Audit in [`paper/README.md`](paper/README.md). |
+| 4. OpenScience | `gpt-4.1-mini` | Wrote a paper in 40 s. Its tables were correct, but the text had six errors (one caused by our prompt), including the main one: it said the row-resampling interval for G contains the accepted value. Audit in [`paper/README.md`](paper/README.md). |
 
 In these single runs, Open Coscientist's debate-and-rank step put a wrong
 hypothesis first. The held-out score separated laws with and without x2, and

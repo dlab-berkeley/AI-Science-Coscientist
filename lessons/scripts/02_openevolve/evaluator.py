@@ -38,7 +38,8 @@ def log_error(fn, rows):
     return sum(errors) / len(errors)
 
 
-def evaluate(program_path):
+def evaluate(program_path, score_on="test"):
+    """Score a candidate. score_on="train" makes a leaky evaluator, for the lesson."""
     spec = importlib.util.spec_from_file_location("candidate", program_path)
     module = importlib.util.module_from_spec(spec)
     try:
@@ -56,8 +57,9 @@ def evaluate(program_path):
         return {"combined_score": 0.0, "train_log_error": train, "test_log_error": test}
 
     # 1.0 = perfect; an error of one order of magnitude gives 0.5.
+    scored = test if score_on == "test" else train
     return {
-        "combined_score": 1.0 / (1.0 + test),
+        "combined_score": 1.0 / (1.0 + scored),
         "train_log_error": train,
         "test_log_error": test,
     }

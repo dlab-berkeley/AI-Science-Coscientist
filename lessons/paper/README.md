@@ -25,6 +25,9 @@ group-resampling interval is the one to trust.
    estimate, p = 1.506 and q = −0.507.
 3. H1 is labelled "Galileo's claim", and the discussion rejects "Galileo's
    simpler linear relation". Galileo gave no formula. H1 is a naive baseline.
+   Our prompt caused part of this error: `goal.md` asked "which historical
+   claim each one is", which assumes every hypothesis has one. We have since
+   changed it to "which historical claim, if any".
 4. The Kepler "quotation" is our paraphrase from `data/literature/README.md` set in
    quotation marks, and the Newton "quotation" splices a real quotation with
    our paraphrase.
@@ -33,5 +36,6 @@ group-resampling interval is the one to trust.
    ("Keplers"), and the units of G and the Latin title are garbled. The
    exponent table also has more cells than headers.
 
-A fluent, well-organized paper with correct tables still carried six errors,
-one of them in the headline result. That is why every claim needs checking.
+In this single run, a fluent, well-organized paper with correct tables still
+carried six errors (one of them prompted by us), including the main
+statistical point. That is why every claim needs checking.

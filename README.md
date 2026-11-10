@@ -31,7 +31,7 @@ After this workshop, you will be able to:
 
 - Describe the stages of an AI-assisted research workflow, and which AI tool fits each one.
 - Explain why data are disguised before an AI model sees them.
-- Write an evaluator that scores hypotheses on held-out data.
+- Explain why an evaluator must score hypotheses on held-out data, and spot one that leaks.
 - Compare competing hypotheses and estimate their uncertainty with the bootstrap.
 - Audit an AI-written paper claim by claim against the results.
 
