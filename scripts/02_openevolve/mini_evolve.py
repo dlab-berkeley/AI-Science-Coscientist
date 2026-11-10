@@ -6,7 +6,7 @@ Same idea as AlphaEvolve/OpenEvolve, stripped to the core so it runs in seconds:
   - C is fitted to the training data (log-space least squares)
   - selection keeps the candidates with the lowest held-out error
 
-Run:  python 02_openevolve/mini_evolve.py
+Run:  python scripts/02_openevolve/mini_evolve.py
 """
 import math
 import random
@@ -15,7 +15,7 @@ from pathlib import Path
 
 from evaluator import load_rows
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "data"))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2] / "data"))
 from reveal import G_ACCEPTED, implied_g  # noqa: E402  (only used to check the answer at the end)
 
 random.seed(5)  # this seed plateaus, then breaks through: good for a live demo

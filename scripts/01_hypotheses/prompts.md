@@ -66,7 +66,7 @@ evolution stage (Stage 2). Write it as a 5-line research overview.
 ```
 
 **Hand-off:** write the winning expression into the `predict` function in
-`02_openevolve/initial_program.py`, fitting its constants inside `fit` (or
+`scripts/02_openevolve/initial_program.py`, fitting its constants inside `fit` (or
 keep the naive starting point and let evolution find it).
 
 **Discussion point:** Ranking by debate is only as good as the judge. Stage 2

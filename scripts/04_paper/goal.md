@@ -12,7 +12,7 @@ No key, or no Node.js? Use the offline fallback, which fills the same paper
 skeleton from `results/results.json` with template text:
 
 ```bash
-uv run python 04_paper/make_paper.py        # writes paper/report.md
+uv run python scripts/04_paper/make_paper.py        # writes paper/report.md
 ```
 
 ## Setup (once)
@@ -29,7 +29,7 @@ openscience models openai          # lists the models your key can use
 Run Stage 3 first so `results/` exists:
 
 ```bash
-uv run python 03_tests/hypothesis_tests.py
+uv run python scripts/03_tests/hypothesis_tests.py
 ```
 
 ## Run
@@ -38,7 +38,7 @@ From the repo root, in one shot:
 
 ```bash
 openscience run --workspace project --delegation off -m openai/gpt-4.1-mini \
-  "$(sed -n '/^```text$/,/^```$/p' 04_paper/goal.md | sed '1d;$d')"
+  "$(sed -n '/^```text$/,/^```$/p' scripts/04_paper/goal.md | sed '1d;$d')"
 ```
 
 `--workspace project` lets the agent read and write files in this repo. Its
@@ -46,8 +46,8 @@ shell commands stay in OpenScience's sandbox. Or open the workspace in the
 browser with `openscience web .` and paste the prompt.
 
 Our test run took about 40 seconds and is saved, unedited, as
-[`paper/openscience_report.md`](../paper/openscience_report.md), with an audit
-of its errors in [`paper/README.md`](../paper/README.md).
+[`paper/openscience_report.md`](../../paper/openscience_report.md), with an audit
+of its errors in [`paper/README.md`](../../paper/README.md).
 
 ## Prompt
 
@@ -59,7 +59,7 @@ Read these files first:
 - results/fig_pred_vs_obs.png                           (the figure)
 - data/key.json                                         (what x1, x2, y and the groups are)
 - literature/README.md                                  (three 17th-century sources)
-- 03_tests/hypothesis_tests.py                          (the method)
+- scripts/03_tests/hypothesis_tests.py                  (the method)
 
 Write paper/report.md with these sections:
 1. Abstract (under 120 words).

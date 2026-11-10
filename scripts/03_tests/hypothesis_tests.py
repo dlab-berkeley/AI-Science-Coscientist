@@ -7,7 +7,7 @@ No LLM and no key. Everything is ordinary least squares on log10 values.
   3. Significance: does x2 matter at all?
   4. Reveal: undo the disguise and estimate the gravitational constant G
 
-Run:  python 03_tests/hypothesis_tests.py [--data data/observations.csv] [--out results]
+Run:  python scripts/03_tests/hypothesis_tests.py [--data data/observations.csv] [--out results]
 """
 import argparse
 import json
@@ -16,21 +16,19 @@ import sys
 from pathlib import Path
 
 import matplotlib
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy import stats
 
-matplotlib.use("Agg")
-import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
-from scipy import stats  # noqa: E402
-
-ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT / "02_openevolve"))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "02_openevolve"))
 sys.path.insert(0, str(ROOT / "data"))
 from evaluator import evaluate, load_rows  # noqa: E402
 from reveal import G_ACCEPTED, implied_g, load_key  # noqa: E402
 
 N_BOOT = 5000
 SEED = 1687  # the year of Newton's Principia
-EVOLVED = ROOT / "02_openevolve" / "openevolve_output" / "best" / "best_program.py"
+EVOLVED = ROOT / "scripts" / "02_openevolve" / "openevolve_output" / "best" / "best_program.py"
 
 # name, description, design-matrix columns (free exponents), fixed exponents (p, q)
 HYPOTHESES = [
@@ -312,4 +310,5 @@ def main():
 
 
 if __name__ == "__main__":
+    matplotlib.use("Agg")  # set here, not at import, so notebooks keep inline plots
     main()

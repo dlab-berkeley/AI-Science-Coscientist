@@ -4,7 +4,7 @@ Two write-ups of the same results (`results/results.json`).
 
 | File | Written by | Numbers |
 | --- | --- | --- |
-| [`example_report.md`](example_report.md) | `04_paper/make_paper.py`, a fixed template | All computed by the script |
+| [`example_report.md`](example_report.md) | `scripts/04_paper/make_paper.py`, a fixed template | All computed by the script |
 | [`openscience_report.md`](openscience_report.md) | OpenScience 2.0.151 with `openai/gpt-4.1-mini`, one run of about 40 seconds, saved unedited | Copied by the agent |
 
 ## Audit of the OpenScience report
